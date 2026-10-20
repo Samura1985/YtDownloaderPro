@@ -1,0 +1,70 @@
+name: Build Windows release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build self-extracting EXE
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force dist | Out-Null
+          @'
+          [Version]
+          Class=IEXPRESS
+          SEDVersion=3
+          [Options]
+          PackagePurpose=InstallApp
+          ShowInstallProgramWindow=1
+          HideExtractAnimation=1
+          UseLongFileName=1
+          InsideCompressed=0
+          CAB_FixedSize=0
+          CAB_ResvCodeSigning=0
+          RebootMode=N
+          InstallPrompt=%InstallPrompt%
+          DisplayLicense=%DisplayLicense%
+          FinishMessage=%FinishMessage%
+          TargetName=%TargetName%
+          FriendlyName=%FriendlyName%
+          AppLaunched=%AppLaunched%
+          PostInstallCmd=%PostInstallCmd%
+          AdminQuietInstCmd=%AdminQuietInstCmd%
+          UserQuietInstCmd=%UserQuietInstCmd%
+          SourceFiles=SourceFiles
+          [Strings]
+          InstallPrompt=
+          DisplayLicense=
+          FinishMessage=
+          TargetName=dist\YtDownloaderPro.exe
+          FriendlyName=YtDownloaderPro
+          AppLaunched=cmd.exe /c "YtDownloaderPro.bat"
+          PostInstallCmd=<None>
+          AdminQuietInstCmd=
+          UserQuietInstCmd=
+          FILE0="YtDownloaderPro.bat"
+          [SourceFiles]
+          SourceFiles0=.
+          [SourceFiles0]
+          %FILE0%=
+          '@ | Set-Content -Encoding ASCII build.sed
+          iexpress.exe /N /Q build.sed
+          if (!(Test-Path dist\YtDownloaderPro.exe)) { throw 'No s’ha generat l’executable' }
+
+      - name: Publish release assets
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true
+          files: |
+            dist/YtDownloaderPro.exe
+            YtDownloaderPro.bat
+
