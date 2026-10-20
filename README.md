@@ -2,6 +2,8 @@
 
 Eina de consola en català per descarregar vídeos o àudio amb yt-dlp a Windows.
 
+**Descarrega l'executable per a Windows:** [YtDownloaderPro.exe](https://github.com/Samura1985/YtDownloaderPro/releases/latest/download/YtDownloaderPro.exe)
+
 ## Versió 0.21
 
 - Codi font: `YtDownloaderPro.bat`
@@ -10,7 +12,7 @@ Eina de consola en català per descarregar vídeos o àudio amb yt-dlp a Windows
 - Pot instal·lar yt-dlp i Deno amb WinGet.
 - Per convertir a MP3 o combinar pistes de vídeo i àudio cal FFmpeg.
 
-Les descàrregues s'ordenen a `Videos\YouTubeMP4` i `Music\YouTubeMP3` dins del perfil de Windows.
+Les descàrregues s'ordenen a `Videos\\YouTubeMP4` i `Music\\YouTubeMP3` dins del perfil de Windows.
 
 ## Execució
 
@@ -27,4 +29,3 @@ Cada versió es publica com una GitHub Release. Per preparar-ne una, actualitza 
 ## Avís
 
 Utilitza l'eina només per a contingut que tens dret a descarregar i respecta les condicions del servei aplicable. yt-dlp, Deno, FFmpeg i WinGet són projectes o eines de tercers.
-
