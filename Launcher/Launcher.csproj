@@ -5,9 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <AssemblyName>YtDownloaderPro</AssemblyName>
+    <ApplicationIcon>../Assets/YtDownloaderPro.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="../YtDownloaderPro.bat" LogicalName="YtDownloaderPro.YtDownloaderPro.bat" />
   </ItemGroup>
 </Project>
-
