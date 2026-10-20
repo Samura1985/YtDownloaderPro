@@ -18,7 +18,7 @@ Descarrega el fitxer `YtDownloaderPro.bat` des del repositori i obre'l. Per a le
 
 ## Executable
 
-Les versions publicades inclouen `YtDownloaderPro.exe`, un paquet autoextraïble de Windows que inicia el mateix BAT. El fitxer font continua disponible per inspeccionar-lo o executar-lo directament.
+Les versions publicades inclouen `YtDownloaderPro.exe`, un executable de Windows que inicia el mateix BAT. No cal instal·lar .NET per executar-lo. El fitxer font continua disponible per inspeccionar-lo o executar-lo directament.
 
 ## Actualitzacions
 
