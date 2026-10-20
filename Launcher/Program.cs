@@ -154,7 +154,7 @@ static async Task InstallUpdateAsync(ReleaseInfo update, string executablePath)
         """;
 
     await File.WriteAllTextAsync(scriptPath, script);
-    Process.Start(new ProcessStartInfo
+    _ = Process.Start(new ProcessStartInfo
     {
         FileName = "powershell.exe",
         Arguments = $"-NoProfile -NonInteractive -ExecutionPolicy Bypass -File \"{scriptPath}\"",
