@@ -19,6 +19,12 @@ jobs:
         with:
           dotnet-version: 8.0.x
 
+      - name: Restore application icon
+        shell: pwsh
+        run: |
+          $icon = [Convert]::FromBase64String((Get-Content Assets/YtDownloaderPro.ico.base64 -Raw))
+          [IO.File]::WriteAllBytes('Assets/YtDownloaderPro.ico', $icon)
+
       - name: Build Windows executable
         run: dotnet publish Launcher/Launcher.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o dist
 
